@@ -124,7 +124,8 @@ function showSolutionToggle() {
       <p class="toggle-msg">إذا كنت ترغب بأخذ لقطة شاشة يرجى إخفاء الحل لكي لا يظهر الحل لباقي الطلاب</p>
       <button id="show-btn" class="toggle-btn" style="display:none;">عرض الحل</button>
     `;
-    resultBox.insertAdjacentElement('afterend', toggleDiv);
+    // أدخل toggleDiv داخل resultBox قبل عنصر النتيجة
+    resultBox.insertBefore(toggleDiv, scoreEl);
 
     const hideBtn = toggleDiv.querySelector('#hide-btn');
     const showBtn = toggleDiv.querySelector('#show-btn');
