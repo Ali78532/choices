@@ -107,6 +107,7 @@ function showSolutionToggle() {
   msg.id = 'solution-toggle-msg';
   msg.classList.add('toggle-msg');
   msg.textContent = 'إذا كنت ترغب بأخذ لقطة شاشة يرجى إخفاء الحل لكي لا يظهر الحل لباقي الطلاب';
+  msg.style.marginBottom = '30px';
   resultBox.prepend(msg);
 
   // 2. فاصل سطر
