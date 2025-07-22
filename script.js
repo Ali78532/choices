@@ -13,7 +13,7 @@ const scoreEl     = document.getElementById('score');
 
 function celebrate() {
   const colors = ['#e91e63', '#ffeb3b', '#4caf50', '#2196f3', '#ff9800', '#9c27b0'];
-  const count = 50; // عدد الأشرطة
+  const count = 50;
 
   for (let i = 0; i < count; i++) {
     const sq = document.createElement('div');
@@ -37,11 +37,9 @@ function celebrate() {
     const dur = (3 + Math.random() * 2) + 's';
     sq.style.setProperty('--dur', dur);
 
-    // التأخير العشوائي
     const delay = Math.random() * 2 + 's';
     sq.style.animationDelay = delay;
 
-    // تحديد نقطة الانطلاق فقط من الأعلى
     sq.style.top = '-10px';
     sq.style.left = Math.random() * window.innerWidth + 'px';
 
@@ -119,17 +117,35 @@ function showSolutionToggle() {
   if (!toggleDiv) {
     toggleDiv = document.createElement('div');
     toggleDiv.id = 'solution-toggle';
-    toggleDiv.innerHTML = `
-      <button id="hide-btn" class="toggle-btn">إخفاء الحل</button>
-      <p class="toggle-msg">إذا كنت ترغب بأخذ لقطة شاشة يرجى إخفاء الحل لكي لا يظهر الحل لباقي الطلاب</p>
-      <button id="show-btn" class="toggle-btn" style="display:none;">عرض الحل</button>
-    `;
-    // أدخل toggleDiv داخل resultBox قبل عنصر النتيجة
-    resultBox.insertBefore(toggleDiv, scoreEl);
 
-    const hideBtn = toggleDiv.querySelector('#hide-btn');
-    const showBtn = toggleDiv.querySelector('#show-btn');
-    const msg = toggleDiv.querySelector('.toggle-msg');
+    // أنشئ الفقرة التحذيرية
+    const msg = document.createElement('p');
+    msg.classList.add('toggle-msg');
+    msg.textContent = 'إذا كنت ترغب بأخذ لقطة شاشة يرجى إخفاء الحل لكي لا يظهر الحل لباقي الطلاب';
+
+    // أنشئ زر الإخفاء وزر العرض
+    const hideBtn = document.createElement('button');
+    hideBtn.id = 'hide-btn';
+    hideBtn.classList.add('toggle-btn');
+    hideBtn.textContent = 'إخفاء الحل';
+
+    const showBtn = document.createElement('button');
+    showBtn.id = 'show-btn';
+    showBtn.classList.add('toggle-btn');
+    showBtn.textContent = 'عرض الحل';
+    showBtn.style.display = 'none';
+
+    // أزل scoreEl من مكانه الحالي
+    resultBox.removeChild(scoreEl);
+
+    // أضف عناصر toggleDiv بالترتيب: رسالة التحذير، ثم الدرجة، ثم زر الإخفاء ثم زر العرض
+    toggleDiv.appendChild(msg);
+    toggleDiv.appendChild(scoreEl);
+    toggleDiv.appendChild(hideBtn);
+    toggleDiv.appendChild(showBtn);
+
+    // أدخل toggleDiv داخل resultBox في أبكر نقطة
+    resultBox.insertBefore(toggleDiv, resultBox.firstChild);
 
     hideBtn.addEventListener('click', () => {
       containerEl.style.display = 'none';
@@ -149,4 +165,4 @@ function showSolutionToggle() {
     });
   }
   toggleDiv.style.display = 'block';
-}
+      }
