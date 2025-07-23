@@ -5,6 +5,16 @@ body {
   color: #e0e0e0;
 }
 
+/* عبارة إعداد الأستاذ */
+body::after {
+  content: "إعداد الأستاذ: علي حسين";
+  display: block;
+  margin-top: 50px;
+  font-size: 18px;
+  color: #ccc;
+  text-align: center;
+}
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
@@ -63,25 +73,6 @@ h1 {
   transform: scale(1.05);
 }
 
-.result {
-  font-size: 28px;
-  margin-top: 30px;
-  font-weight: bold;
-  color: gold;
-  text-align: center;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-  display: none;
-}
-
-body::after {
-  content: "إعداد الأستاذ: علي حسين";
-  display: block;
-  margin-top: 50px;
-  font-size: 18px;
-  color: #ccc;
-  text-align: center;
-}
-
 .hint {
   color: yellow;
   font-size: 16px;
@@ -91,14 +82,17 @@ body::after {
   direction: rtl;
 }
 
-#solution-toggle {
-  text-align: center;
-  margin-top: 20px;
+#result-box {
+  margin-top: 30px;
+  color: yellow;
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 .toggle-btn {
   display: inline-block;
-  margin: 10px;
+  margin: 10px auto;
   padding: 8px 16px;
   font-size: 16px;
   border: 2px solid #555;
@@ -112,25 +106,10 @@ body::after {
   background: rgba(255,255,255,0.1);
 }
 
-.toggle-msg {
-  text-align: center;
-  font-size: 14px;
-  color: #e0e0e0;
-  margin: 10px 0;
-}
-
 @keyframes confetti-fall {
-  0% {
-    transform: translate(0, 0) rotate(0deg);
-    opacity: 0;
-  }
-  1% {
-    opacity: var(--o, 0.9);
-  }
-  100% {
-    transform: translate(var(--dx), var(--dy)) rotate(calc(var(--r) * 1deg));
-    opacity: var(--o, 0.9);
-  }
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  1% { opacity: var(--o, 0.9); }
+  100% { transform: translate(var(--dx), var(--dy)) rotate(calc(var(--r) * 1deg)); opacity: var(--o, 0.9); }
 }
 
 .confetti {
@@ -138,7 +117,7 @@ body::after {
   width: var(--w, 8px);
   height: var(--h, 8px);
   background-color: var(--bg, red);
-  opacity: 0; /* مبدئيا مخفية دائما */
+  opacity: 0;
   pointer-events: none;
   transform: translate(0, 0) rotate(0deg);
   animation: confetti-fall var(--dur) ease-out forwards;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ار">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,10 +20,13 @@
   <!-- هنا يُحقن محتوى الأسئلة -->
   <div id="quiz-container"></div>
 
-  <!-- صندوق النتيجة المشترك -->
-  <div class="result" id="result-box">درجتك: <span id="score">0</span></div>
+  <!-- صندوق النتيجة -->
+  <div id="result-box" style="display:none; text-align:center;">
+    درجتك: <span id="score">0</span>
+    <!-- زر "عرض الحل" يُضاف برمجيًا أدناه -->
+  </div>
 
-  <!-- تحميل السكربت المشترك -->
+  <!-- تحميل السكربت -->
   <script src="script.js"></script>
 </body>
 </html>
